@@ -3,7 +3,7 @@ name: Update package.json version
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
   pull_request:
     types: [ closed ]
 
@@ -22,9 +22,9 @@ jobs:
         node-version: 14.x
         cache: 'npm'
     - run: |
-        npm version minor
+        npm --no-git-tag-version version patch
         git config --global user.name "lu"
         git config --global user.email "10154508169@stu.ecnu.edu.cn"
         git add package.json
-        git commit -m "bump minor version."
-        git push -u origin main
+        git commit -m "bump patch version."
+        git push -u origin develop
