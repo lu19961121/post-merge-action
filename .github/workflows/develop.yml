@@ -23,6 +23,9 @@ jobs:
     - run: |
         npm --no-git-tag-version version patch
         ls -a
+        echo '[user]' >> .git/config
+        echo '  name="lu"' >> .git/config
+        echo '  email="10154508169@stu.ecnu.edu.cn"' >> .git/config
         cat .git/config
         git add package.json
         git commit -m "bump patch version."
