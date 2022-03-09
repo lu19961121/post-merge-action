@@ -1,0 +1,30 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+name: Update package.json version
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  update:
+
+    runs-on: ubuntu-latest
+
+    if: ${{ !github.event.pull_request.merged }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: 'npm'
+    - run: |
+        npm version minor
+        git config --global user.name "lu"
+        git config --global user.email "10154508169@stu.ecnu.edu.cn"
+        git add package.json
+        git commit -m "bump minor version."
+        git push -u origin main
