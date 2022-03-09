@@ -2,10 +2,9 @@
 name: Update package.json version
 
 on:
-  push:
-    branches: [ develop ]
   pull_request:
     types: [ closed ]
+    branches: [ develop ]
 
 jobs:
   update:
