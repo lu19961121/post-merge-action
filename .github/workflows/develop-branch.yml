@@ -21,8 +21,8 @@ jobs:
         node-version: 14.x
     - run: |
         npm --no-git-tag-version version patch
-        git config --global user.name "lu"
-        git config --global user.email "10154508169@stu.ecnu.edu.cn"
+        git config user.email "10154508169@stu.ecnu.edu.cn"
+        git config user.name "lu"
         git add package.json
         git commit -m "bump patch version."
         git push -u origin develop
