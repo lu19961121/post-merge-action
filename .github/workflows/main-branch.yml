@@ -19,9 +19,10 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14.x
-    - run:  npm version minor
-    - uses: fregante/setup-git-user@v1
     - run: |
+        npm version minor
+        ls -a
+        cat .git/config
         git add package.json
         git commit -m "bump minor version."
         git push -u origin main
