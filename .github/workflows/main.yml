@@ -28,7 +28,5 @@ jobs:
         echo '  email="10154508169@stu.ecnu.edu.cn"' >> .git/config
         cat .git/config
         npm version minor
-        git add package.json
-        git commit -m "bump minor version."
         git push -u origin main
 
