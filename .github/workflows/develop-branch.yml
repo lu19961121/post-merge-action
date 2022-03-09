@@ -14,15 +14,14 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
 
     steps:
-    - uses: actions/checkout@v2
     - name: Use Node.js 14.x
-      uses: actions/setup-node@v2
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - uses: fregante/setup-git-user@v1
       with:
         node-version: 14.x
     - run: |
         npm --no-git-tag-version version patch
-        git config user.email "10154508169@stu.ecnu.edu.cn"
-        git config user.name "lu"
         git add package.json
         git commit -m "bump patch version."
         git push -u origin develop
